@@ -351,6 +351,8 @@ TEST(deletebidirectional,normal)
     i=delete_from_list(&head,4);
     i=delete_from_list(&head,1);
 	
+	newll=&head;
+	
 	while(newll->next != NULL)
 		{
 			current=(int)newll;

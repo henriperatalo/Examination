@@ -136,5 +136,9 @@ int linkedlist_status(linked_list *ll)
 			newll = newll->next;
 			i++;
 		}
-	return i;	
+	
+	if(i<0)
+		return -1;
+	else
+		return i;	
 };
