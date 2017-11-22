@@ -14,7 +14,7 @@ int add_to_list(linked_list *ll, char *s)
     newll->next->data = s;
     newll->next->next = NULL;
 	newll->next->index = i;
-
+	newll->next->previous = newll;
 
 //	struct linked_list *newll
 //	newll = (linked_list* )malloc(sizeof(struct linked_list));
@@ -92,12 +92,14 @@ int delete_from_list(linked_list *ll, int index)
 
     temp = newll->next;
     newll->next = temp->next;
+	
     free(temp);
 	i=0;
 	newll = ll;
 	
 	while (newll->next != NULL)
 		{
+			newll->next->previous = newll;
 			newll = newll->next;
 			i++;
 		}

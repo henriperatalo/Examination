@@ -1,8 +1,6 @@
 #include <gtest/gtest.h>
 #include "linkedlist.h"
 
-
-
 TEST(addtest,normal) {
     char str[15]="List Start";
     char str1[10]="zero";
@@ -222,16 +220,16 @@ TEST(delete,multi) {
 
     i=delete_from_list(&head,12);
     EXPECT_EQ(i,45);
-    delete_from_list(&head,22);
+    i=delete_from_list(&head,22);
     EXPECT_EQ(i,44);
-    delete_from_list(&head,25);
+    i=delete_from_list(&head,25);
     EXPECT_EQ(i,43);
-    delete_from_list(&head,32);
+    i=delete_from_list(&head,32);
     EXPECT_EQ(i,42);
-    delete_from_list(&head,38);
+    i=delete_from_list(&head,38);
     EXPECT_EQ(i,41);
 
-    delete_from_list(&head,380);
+    i=delete_from_list(&head,380);
     EXPECT_EQ(i,-1);
 
 }
@@ -262,4 +260,105 @@ TEST(empty,normal) {
 }
 
 
+
+TEST(addbidirectional,normal) {
+    char str[15]="List Start";
+    char str1[10]="zero";
+    char str2[10]="first";
+    char str3[10]="second";
+    char str4[10]="third";
+    char str5[10]="fourth";
+    char str6[10]="fifth";
+    int i;
+	int current,previous;
+    linked_list head;
+	
+
+    head.next=0;
+    head.data=str;
+    head.index=0;
+	head.previous=0;
+
+    i=add_to_list(&head,str1);
+	EXPECT_EQ(1,i);
+    i=add_to_list(&head,str2);
+    EXPECT_EQ(2,i);
+    i=add_to_list(&head,str3);
+    EXPECT_EQ(3,i);
+    i=add_to_list(&head,str4);
+    EXPECT_EQ(4,i);
+    i=add_to_list(&head,str5);
+    EXPECT_EQ(5,i);
+    i=add_to_list(&head,str6);
+    EXPECT_EQ(6,i);
+	
+	linked_list *newll=&head;
+
+	
+	while(newll->next != NULL)
+	{
+	current=(int)newll;
+	previous=(int)newll->next->previous;
+	EXPECT_EQ(current,previous);
+	printf("%d\n",current);
+	printf("%d\n\n",previous);
+	newll=newll->next;
+	}
+	
+}
+
+TEST(deletebidirectional,normal)
+{
+    char str[15]="List Start";
+    char str1[10]="zero";
+    char str2[10]="first";
+    char str3[10]="second";
+    char str4[10]="third";
+    char str5[10]="fourth";
+    char str6[10]="fifth";
+    int i;
+
+
+    linked_list head;
+    head.next=0;
+    head.data=str;
+    head.index=0;
+	
+	linked_list *newll=&head;
+	int current,previous;
+
+    i=add_to_list(&head,str1);
+    i=add_to_list(&head,str2);
+    i=add_to_list(&head,str3);
+    i=add_to_list(&head,str4);
+    i=add_to_list(&head,str5);
+    i=add_to_list(&head,str6);
+	EXPECT_EQ(i,6);
+
+    i=delete_from_list(&head,2);
+    i=delete_from_list(&head,5);
+
+	while(newll->next != NULL)
+		{
+			current=(int)newll;
+			previous=(int)newll->next->previous;
+			EXPECT_EQ(current,previous);
+			printf("%d\n",current);
+			printf("%d\n\n",previous);
+			newll=newll->next;
+		}
+		
+    i=delete_from_list(&head,4);
+    i=delete_from_list(&head,1);
+	
+	while(newll->next != NULL)
+		{
+			current=(int)newll;
+			previous=(int)newll->next->previous;
+			EXPECT_EQ(current,previous);
+			printf("%d\n",current);
+			printf("%d\n\n",previous);
+			newll=newll->next;
+	}
+}
 

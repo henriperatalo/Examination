@@ -5,10 +5,10 @@ my_test: test_case.o linkedlist.o linkedlist.o Gtest_main.c libgtest.a
 	g++ -isystem $(GTEST_DIR)/include -pthread test_case.o linkedlist.o Gtest_main.c libgtest.a -o my_test --coverage
 
 test_case.o: test_case.c
-	g++ -c $(GTEST_INCLUDE) test_case.c --coverage
+	g++ -c $(GTEST_INCLUDE) test_case.c 
 	
 linkedlist.o: linkedlist.c linkedlist.h
-	g++ -c linkedlist.c  --coverage
+	g++ -c linkedlist.c 
 	
 libgtest.a: gtest-all.o
 	ar -rv libgtest.a gtest-all.o
