@@ -15,3 +15,4 @@ int display_list(linked_list *ll);
 linked_list * search_from_list(linked_list *ll, char *s);
 int delete_from_list(linked_list *ll, int index);
 int empty_list(linked_list *ll);
+int linkedlist_status(linked_list *ll);

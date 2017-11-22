@@ -123,3 +123,16 @@ int empty_list(linked_list *ll)
     current->next = NULL;
 	return 0;
 };
+
+int linkedlist_status(linked_list *ll)
+{
+	int i=0;
+	linked_list * newll = ll;
+	
+	while (newll->next != NULL)
+		{
+			newll = newll->next;
+			i++;
+		}
+	return i;	
+};
